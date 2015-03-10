@@ -90,10 +90,16 @@ class ArticleView: UIView {
     self.avatarImageView.backgroundColor = UIColor.greenColor()
     self.titleLabel.text = "Important Article"
     self.titleLabel.backgroundColor = UIColor.redColor()
-    self.bodyTextView.text = "There's lots of really significant text in here that you'll wish you'd read when you click away to that weird trick over there."
+    self.bodyTextView.text = "There's lots of really significant text in here that you'll wish you'd read when you click away to that weird trick over there. Look at how elegantly it wraps around the avatar. You're super impressed and also you should give me a raise."
 
     // Enforce significant view layerings
     self.sendSubviewToBack(self.bodyTextView)
+
+    // Exclusion paths for bodyTextView layout
+
+    let avatarExclusionPath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 90, height: 50))
+    self.bodyTextView.textContainer.exclusionPaths = [ avatarExclusionPath ]
+
   }
 
   required init(coder aDecoder: NSCoder) {

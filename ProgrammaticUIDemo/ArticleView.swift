@@ -28,9 +28,41 @@ class ArticleView: UIView {
     self.addSubview(self.bodyTextView)
 
     // Layout
-    self.avatarImageView.frame = CGRect(x: 10, y: 10, width: 80, height: 80)
     self.titleLabel.frame = CGRect(x: 100, y: 10, width: 200, height: 44)
     self.bodyTextView.frame = CGRect(x: 10, y: 60, width: 290, height: 300)
+
+
+    self.avatarImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    let horizontalAvatarConstraints = NSLayoutConstraint.constraintsWithVisualFormat(
+      "H:|-10-[avatarImageView(80)]",
+      options: nil,
+      metrics: nil,
+      views: [ "avatarImageView" : self.avatarImageView ]
+    )
+
+    self.addConstraints(horizontalAvatarConstraints)
+
+    self.avatarImageView.addConstraint(NSLayoutConstraint(
+      item: self.avatarImageView,
+      attribute: NSLayoutAttribute.Width,
+      relatedBy: NSLayoutRelation.Equal,
+      toItem: self.avatarImageView,
+      attribute: NSLayoutAttribute.Height,
+      multiplier: 1,
+      constant: 0
+    ))
+
+    self.avatarImageView.addConstraint(NSLayoutConstraint(
+      item: self.avatarImageView,
+      attribute: NSLayoutAttribute.Top,
+      relatedBy: NSLayoutRelation.Equal,
+      toItem: self,
+      attribute: NSLayoutAttribute.Top,
+      multiplier: 0,
+      constant: 10
+      ))
+
+
 
     // Subview configuration
     self.avatarImageView.backgroundColor = UIColor.greenColor()

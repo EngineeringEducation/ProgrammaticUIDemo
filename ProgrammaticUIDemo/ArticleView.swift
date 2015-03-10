@@ -17,11 +17,18 @@ class ArticleView: UIView {
 
   override init(frame: CGRect) {
     // Create subviews
-    self.avatarImageView = UIImageView()
+    self.avatarImageView = UIImageView(image: UIImage(named: "purtykurty"))
+    self.avatarImageView.clipsToBounds = true
+    self.avatarImageView.contentMode = UIViewContentMode.ScaleAspectFill
+
     self.titleLabel = UILabel()
     self.bodyTextView = UITextView()
 
     super.init(frame: frame)
+
+    // Initialization
+
+    self.backgroundColor = UIColor.whiteColor()
 
     // Build out the view hierarchy
     self.addSubview(self.avatarImageView)
@@ -87,9 +94,7 @@ class ArticleView: UIView {
     }
 
     // Subview configuration
-    self.avatarImageView.backgroundColor = UIColor.greenColor()
     self.titleLabel.text = "Important Article"
-    self.titleLabel.backgroundColor = UIColor.redColor()
     self.bodyTextView.text = "There's lots of really significant text in here that you'll wish you'd read when you click away to that weird trick over there. Look at how elegantly it wraps around the avatar. You're super impressed and also you should give me a raise."
 
     // Enforce significant view layerings

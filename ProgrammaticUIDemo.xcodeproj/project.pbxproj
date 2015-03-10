@@ -11,6 +11,8 @@
 		B18842601AAF656F00A3D98E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B188425F1AAF656F00A3D98E /* Images.xcassets */; };
 		B18842631AAF656F00A3D98E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B18842611AAF656F00A3D98E /* LaunchScreen.xib */; };
 		B188426F1AAF656F00A3D98E /* ProgrammaticUIDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B188426E1AAF656F00A3D98E /* ProgrammaticUIDemoTests.swift */; };
+		B18842791AAF684C00A3D98E /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18842781AAF684C00A3D98E /* ArticleViewController.swift */; };
+		B188427B1AAF686100A3D98E /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B188427A1AAF686000A3D98E /* ArticleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,8 @@
 		B18842681AAF656F00A3D98E /* ProgrammaticUIDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProgrammaticUIDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B188426D1AAF656F00A3D98E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B188426E1AAF656F00A3D98E /* ProgrammaticUIDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticUIDemoTests.swift; sourceTree = "<group>"; };
+		B18842781AAF684C00A3D98E /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		B188427A1AAF686000A3D98E /* ArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				B18842581AAF656F00A3D98E /* AppDelegate.swift */,
+				B18842781AAF684C00A3D98E /* ArticleViewController.swift */,
+				B188427A1AAF686000A3D98E /* ArticleView.swift */,
 				B188425F1AAF656F00A3D98E /* Images.xcassets */,
 				B18842611AAF656F00A3D98E /* LaunchScreen.xib */,
 				B18842561AAF656F00A3D98E /* Supporting Files */,
@@ -206,6 +212,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B18842591AAF656F00A3D98E /* AppDelegate.swift in Sources */,
+				B188427B1AAF686100A3D98E /* ArticleView.swift in Sources */,
+				B18842791AAF684C00A3D98E /* ArticleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

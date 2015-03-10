@@ -15,16 +15,31 @@ class ArticleView: UIView {
   var bodyTextView : UITextView
 
   override init(frame: CGRect) {
+    // Create subviews
     self.avatarImageView = UIImageView()
     self.titleLabel = UILabel()
     self.bodyTextView = UITextView()
 
     super.init(frame: frame)
 
+    // Build out the view hierarchy
     self.addSubview(self.avatarImageView)
     self.addSubview(self.titleLabel)
     self.addSubview(self.bodyTextView)
 
+    // Layout
+    self.avatarImageView.frame = CGRect(x: 10, y: 10, width: 80, height: 80)
+    self.titleLabel.frame = CGRect(x: 100, y: 10, width: 200, height: 44)
+    self.bodyTextView.frame = CGRect(x: 10, y: 60, width: 290, height: 300)
+
+    // Subview configuration
+    self.avatarImageView.backgroundColor = UIColor.greenColor()
+    self.titleLabel.text = "Important Article"
+    self.titleLabel.backgroundColor = UIColor.redColor()
+    self.bodyTextView.text = "There's lots of really significant text in here that you'll wish you'd read when you click away to that weird trick over there."
+
+    // Enforce significant view layerings
+    self.sendSubviewToBack(self.bodyTextView)
   }
 
   required init(coder aDecoder: NSCoder) {

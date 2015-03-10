@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Snap
 
 class ArticleView: UIView {
 
@@ -27,42 +28,63 @@ class ArticleView: UIView {
     self.addSubview(self.titleLabel)
     self.addSubview(self.bodyTextView)
 
-    // Layout
-    self.titleLabel.frame = CGRect(x: 100, y: 10, width: 200, height: 44)
-    self.bodyTextView.frame = CGRect(x: 10, y: 60, width: 290, height: 300)
+    // Old-timey layout for self.avatarImageView (equivalent to Snap usage below)
 
+//    self.avatarImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+//    let horizontalAvatarConstraints = NSLayoutConstraint.constraintsWithVisualFormat(
+//      "H:|-10-[avatarImageView(80)]",
+//      options: nil,
+//      metrics: nil,
+//      views: [ "avatarImageView" : self.avatarImageView ]
+//    )
+//
+//    self.addConstraints(horizontalAvatarConstraints)
+//
+//    self.avatarImageView.addConstraint(NSLayoutConstraint(
+//      item: self.avatarImageView,
+//      attribute: NSLayoutAttribute.Width,
+//      relatedBy: NSLayoutRelation.Equal,
+//      toItem: self.avatarImageView,
+//      attribute: NSLayoutAttribute.Height,
+//      multiplier: 1,
+//      constant: 0
+//    ))
+//
+//    self.avatarImageView.addConstraint(NSLayoutConstraint(
+//      item: self.avatarImageView,
+//      attribute: NSLayoutAttribute.Top,
+//      relatedBy: NSLayoutRelation.Equal,
+//      toItem: self,
+//      attribute: NSLayoutAttribute.Top,
+//      multiplier: 0,
+//      constant: 10
+//    ))
 
-    self.avatarImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
-    let horizontalAvatarConstraints = NSLayoutConstraint.constraintsWithVisualFormat(
-      "H:|-10-[avatarImageView(80)]",
-      options: nil,
-      metrics: nil,
-      views: [ "avatarImageView" : self.avatarImageView ]
-    )
+    // Autolayout
 
-    self.addConstraints(horizontalAvatarConstraints)
+    self.avatarImageView.snp_makeConstraints { (make) -> () in
+      make.width.equalTo(self.avatarImageView.snp_height)
+      make.top.equalTo(10)
+      make.leading.equalTo(10)
+      make.height.equalTo(80)
+    }
 
-    self.avatarImageView.addConstraint(NSLayoutConstraint(
-      item: self.avatarImageView,
-      attribute: NSLayoutAttribute.Width,
-      relatedBy: NSLayoutRelation.Equal,
-      toItem: self.avatarImageView,
-      attribute: NSLayoutAttribute.Height,
-      multiplier: 1,
-      constant: 0
-    ))
+    self.titleLabel.setContentCompressionResistancePriority(1000, forAxis: UILayoutConstraintAxis.Vertical)
+    self.titleLabel.setContentHuggingPriority(1000, forAxis: UILayoutConstraintAxis.Vertical)
+    self.titleLabel.snp_makeConstraints { (make) -> () in
+      make.leading.equalTo(self.avatarImageView.snp_trailing).with.offset(10)
+      make.trailing.equalTo(-10)
+      make.top.equalTo(10)
+    }
 
-    self.avatarImageView.addConstraint(NSLayoutConstraint(
-      item: self.avatarImageView,
-      attribute: NSLayoutAttribute.Top,
-      relatedBy: NSLayoutRelation.Equal,
-      toItem: self,
-      attribute: NSLayoutAttribute.Top,
-      multiplier: 0,
-      constant: 10
-      ))
-
-
+    self.bodyTextView.setContentCompressionResistancePriority(1000, forAxis: UILayoutConstraintAxis.Vertical)
+    self.bodyTextView.setContentHuggingPriority(1000, forAxis: UILayoutConstraintAxis.Vertical)
+    self.bodyTextView.snp_makeConstraints { (make) -> () in
+      make.leading.equalTo(10)
+      make.top.equalTo(self.titleLabel.snp_bottom).with.offset(10)
+      make.trailing.equalTo(-10)
+      make.bottom.equalTo(-10)
+    }
 
     // Subview configuration
     self.avatarImageView.backgroundColor = UIColor.greenColor()
